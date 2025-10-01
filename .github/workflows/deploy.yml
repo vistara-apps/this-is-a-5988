@@ -19,7 +19,7 @@ jobs:
         node-version: '22'
         cache: 'npm'
         
-        - name: Install dependencies
+    - name: Install dependencies
       run: npm install
 
     - name: Build application
@@ -35,6 +35,7 @@ jobs:
         vercel-args: '--prod'
         vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
         vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        working-directory: ./
         
     - name: Deploy to Vercel (Preview)
       if: github.ref != 'refs/heads/main' && github.ref != 'refs/heads/master'
@@ -44,6 +45,7 @@ jobs:
         vercel-args: '--no-wait'
         vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
         vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        working-directory: ./
         
     - name: Comment PR with deployment URL
       if: github.event_name == 'pull_request'
@@ -62,7 +64,6 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: `🚀 **Preview Deployment Ready!**
-              \n\n📱 **URL:** ${deploymentUrl}
-              \n\nThis preview will be automatically updated when you push new commits to this PR.`
+              \n\n📱 Visit the deployment at: ${deploymentUrl}`
             });
           }
