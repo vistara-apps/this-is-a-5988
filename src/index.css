@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  body {
+    @apply bg-bg text-text antialiased;
+  }
+}
+
+@layer components {
+  .title {
+    @apply text-2xl font-semibold;
+  }
+  
+  .subtitle {
+    @apply text-lg font-medium;
+  }
+  
+  .body {
+    @apply text-base leading-7;
+  }
+  
+  .body-small {
+    @apply text-sm leading-6;
+  }
+  
+  .label {
+    @apply text-sm font-medium;
+  }
+  
+  .caption {
+    @apply text-xs text-text-muted;
+  }
+  
+  .display {
+    @apply text-4xl font-semibold tracking-tight;
+  }
+  
+  .display-large {
+    @apply text-5xl font-bold tracking-tight;
+  }
+}
